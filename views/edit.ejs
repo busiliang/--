@@ -1,0 +1,19 @@
+<% include header %>
+<div class="container">
+    <form method="post" action="/edit/<%= doc.username %>">
+        用户名&nbsp;&nbsp;&nbsp;：<input type="text" name="username" value="<%= doc.username %>" disabled>
+        <br>
+        <br>
+        姓&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;名：<input type="text" name="name" value="<%= doc.name %>">
+        <br>
+        <br>
+        手&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;机：<input type="text" name="phone" value="<%= doc.phone %>">
+        <br>
+        <br>
+        邮&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;箱：<input type="text" name="email" value="<%= doc.email %>">
+        <br>
+        <br>
+        <input type="submit" value="提交">
+    </form>
+</div>
+<% include footer %>

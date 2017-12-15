@@ -1,0 +1,31 @@
+<% include header %>
+    <div class="container">
+
+        <table class="table table-bordered">
+            <tr>
+                <th>用户名</th>
+                <th>姓名</th>
+                <th>手机</th>
+                <th>邮箱</th>
+                <th>注册日期</th>
+                <th>操作</th>
+            </tr>
+            <% docs.forEach(function (doc) { %>
+            <tr>
+                <td><%= doc.username %></td>
+                <td><%= doc.name %></td>
+                <td><%= doc.phone %></td>
+                <td><%= doc.email %></td>
+                <td><%= doc.time %></td>
+                <td>
+                    <span class="edit"><a href="/edit/<%= doc.time %>">编辑</a></span>
+                    <span class="remove"><a href="/remove/<%= doc.time %>">删除</a></span>
+                </td>
+            </tr>
+            <%})%>
+        </table>
+    </div>
+<% include paging %>
+<% include footer %>
+
+

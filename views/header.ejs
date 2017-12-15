@@ -1,0 +1,42 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title><%= title %></title>
+    <link rel="stylesheet" href="/stylesheets/style.css">
+    <link rel="stylesheet" href="/stylesheets/bootstrap.css">
+</head>
+<body>
+<article>
+    <nav class="navbar navbar-default">
+        <div class="container">
+            <div class="navbar-header">
+                <a class="navbar-brand" href="/">首页</a>
+            </div>
+            <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                <ul class="nav navbar-nav navbar-right">
+                    <% if(user){ %>
+                        <li><a href="/logout">退出</a></li>
+                        <li><a href="/reg">添加</a></li>
+                    <% }else{%>
+                        <li><a href="/login">登录</a></li>
+                        <li><a href="/reg">注册</a></li>
+                    <%}%>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <div class="container">
+        <br>
+        <% if(success){%>
+        <div style="color: green;"><%= success %></div>
+        <%}%>
+        <% if(error){%>
+        <div style="color: red;"><%= error %></div>
+        <%}%>
+        <br>
+    </div>
