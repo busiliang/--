@@ -20,7 +20,7 @@ function checkNotLogin(req,res,next) {
     next();
 }
 module.exports = function (app) {
-    app.get('/',function (req,res) {
+    app.get('/',function (req,res)  {
         var page = parseInt(req.query.page) || 1;
         User.getAll(null,page,function(err,docs,total){
             if(err){
@@ -185,6 +185,21 @@ module.exports = function (app) {
         req.session.user = null;
         req.flash('success','成功退出');
         return res.redirect('/');
+    })
+    app.get('/search',function(req,res){
+        User.search(req.query.keyword,function(err,docs){
+            if(err){
+                req.flash('error',err);
+                return res.redirect('/');
+            }
+            return res.render('search',{
+                title:'搜索结果',
+                user:req.session.user,
+                success:req.flash('success').toString(),
+                error:req.flash('error').toString(),
+                docs:docs
+            })
+        })
     })
 
 }

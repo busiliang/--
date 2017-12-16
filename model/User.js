@@ -187,6 +187,40 @@ User.remove = function(time,callback){
         })
     })
 }
+//搜索
+User.search = function(keyword,callback){
+    mongodb.open(function(err,db){
+        if(err){
+            return callback(err);
+        }
+        db.collection('users',function(err,collection){
+            if(err){
+                mongodb.close();
+                return callback(err);
+            }
+            console.log('12313213')
+            var newRegex = new RegExp(keyword,"i");
+            collection.find({
+                phone : newRegex
+            },{
+                username:1,
+                name:1,
+                phone:1,
+                email:1,
+                time:1
+            }).sort({time:-1}).toArray(function(err,docs){
+
+                mongodb.close();
+                if(err){
+                    return callback(err);
+                }
+                console.log(docs)
+                return callback(null,docs);
+            })
+
+        })
+    })
+}
 
 
 
